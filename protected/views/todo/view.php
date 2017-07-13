@@ -8,11 +8,11 @@ $this->breadcrumbs=array(
 );
 
 $this->menu=array(
-	array('label'=>'List Todo', 'url'=>array('index')),
+	array('label'=>'List Todo', 'url'=>array('index'), 'class'=>'classname'),
 	array('label'=>'Create Todo', 'url'=>array('create')),
 	array('label'=>'Update Todo', 'url'=>array('update', 'id'=>$model->id)),
 	array('label'=>'Delete Todo', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Todo', 'url'=>array('admin')),
+	
 );
 
 if ($model->complete == 1) {

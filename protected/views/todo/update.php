@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	'Todos'=>array('index'),
-	$model->id=>array('view','id'=>$model->id),
+	$model->id=>array('index','id'=>$model->id),
 	'Update',
 );
 
@@ -12,10 +12,10 @@ $this->menu=array(
 	array('label'=>'List Todo', 'url'=>array('index')),
 	array('label'=>'Create Todo', 'url'=>array('create')),
 	array('label'=>'View Todo', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Todo', 'url'=>array('admin')),
+	array('label'=>'Manage Todo', 'url'=>array('index')),
 );
 ?>
 
 <h1>Update Todo <?php echo $model->id; ?></h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form_update', array('model'=>$model)); ?>

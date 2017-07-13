@@ -36,7 +36,7 @@ class TodoController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
+				'actions'=>array('index','delete'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -114,31 +114,13 @@ class TodoController extends Controller
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 	}
 
 	/**
-	 * Lists all models.
+	 * Lists all models + administrative operations
 	 */
 	public function actionIndex()
-	{
-		$model=new Todo;
-		$dataProvider=new CActiveDataProvider('Todo');
-		if(isset($_POST['Todo']))
-		{
-			$model->attributes=$_POST['Todo'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider, 'model'=>$model
-		));
-	}
-
-	/**
-	 * Manages all models.
-	 */
-	public function actionAdmin()
 	{
 		$model=new Todo('search');
 		$model->unsetAttributes();  // clear any default values
@@ -146,9 +128,9 @@ class TodoController extends Controller
 		{
 			$model->attributes=$_POST['Todo'];
 			if($model->save())
-				$this->redirect(array('admin','id'=>$model->id));
+				$this->redirect(array('index','id'=>$model->id));
 		}
-		$this->render('admin',array(
+		$this->render('index',array(
 			'model'=>$model,
 		));
 	}

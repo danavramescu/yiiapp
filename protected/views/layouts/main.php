@@ -35,8 +35,7 @@
 				array('label'=>'Articles', 'url'=>array('/articles'), 'visible'=>!Yii::app()->user->isGuest),	
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),				
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),	
-
-				array('label'=>'TODO', 'url'=>array('/todo'), 'visible'=>!Yii::app()->user->isGuest),			
+				array('label'=>'TODO', 'url'=>array('/todo/index'), 'visible'=>!Yii::app()->user->isGuest),			
 			),
 		)); ?>
 	</div><!-- mainmenu -->

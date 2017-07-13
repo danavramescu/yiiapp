@@ -4948,3 +4948,416 @@ REQUEST_URI=/todo/admin/13
 in /var/www/yiiapp/htdocs/protected/views/todo/admin.php (28)
 in /var/www/yiiapp/htdocs/protected/controllers/TodoController.php (152)
 in /var/www/yiiapp/htdocs/index.php (13)
+2017/07/13 13:41:17 [error] [exception.CException] CException: TodoController cannot find the requested view "_formUpdate". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:881
+Stack trace:
+#0 /var/www/yiiapp/htdocs/protected/views/todo/update.php(21): CController->renderPartial('_formUpdate', Array)
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CBaseController.php(126): require('/var/www/yiiapp...')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/yiiapp...', Array, true)
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(872): CBaseController->renderFile('/var/www/yiiapp...', Array, true)
+#4 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(785): CController->renderPartial('update', Array, true)
+#5 /var/www/yiiapp/htdocs/protected/controllers/TodoController.php(102): CController->render('update', Array)
+#6 [internal function]: TodoController->actionUpdate('19')
+#7 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(TodoController), Array)
+#8 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(TodoController), Object(ReflectionMethod), Array)
+#9 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/filters/CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#11 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#12 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(1148): CFilter->filter(Object(CFilterChain))
+#13 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#14 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#15 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(291): CFilterChain->run()
+#16 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#17 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('update')
+#18 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/update')
+#19 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#20 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#21 {main}
+REQUEST_URI=/todo/update/19
+HTTP_REFERER=http://dev.yiiapp.com/todo/admin/19
+---
+2017/07/13 13:49:03 [error] [exception.CException] CException: CActiveForm and its behaviors do not have a method or closure named "field". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CComponent.php:266
+Stack trace:
+#0 /var/www/yiiapp/htdocs/protected/views/todo/_form_update.php(38): CComponent->__call('field', Array)
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CBaseController.php(126): require('/var/www/yiiapp...')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/yiiapp...', Array, true)
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(872): CBaseController->renderFile('/var/www/yiiapp...', Array, true)
+#4 /var/www/yiiapp/htdocs/protected/views/todo/update.php(21): CController->renderPartial('_form_update', Array)
+#5 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CBaseController.php(126): require('/var/www/yiiapp...')
+#6 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/yiiapp...', Array, true)
+#7 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(872): CBaseController->renderFile('/var/www/yiiapp...', Array, true)
+#8 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(785): CController->renderPartial('update', Array, true)
+#9 /var/www/yiiapp/htdocs/protected/controllers/TodoController.php(102): CController->render('update', Array)
+#10 [internal function]: TodoController->actionUpdate('20')
+#11 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(TodoController), Array)
+#12 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(TodoController), Object(ReflectionMethod), Array)
+#13 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#14 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/filters/CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#15 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#16 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(1148): CFilter->filter(Object(CFilterChain))
+#17 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#18 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#19 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(291): CFilterChain->run()
+#20 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#21 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('update')
+#22 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/update')
+#23 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#24 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#25 {main}
+REQUEST_URI=/todo/update/20
+HTTP_REFERER=http://dev.yiiapp.com/todo/admin/20
+---
+2017/07/13 13:51:05 [error] [exception.CException] CException: Property "Todo.data" is not defined. in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/db/ar/CActiveRecord.php(145): CComponent->__get('data')
+#1 /var/www/yiiapp/htdocs/protected/views/todo/admin.php(33): CActiveRecord->__get('data')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CBaseController.php(126): require('/var/www/yiiapp...')
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CBaseController.php(95): CBaseController->renderInternal('/var/www/yiiapp...', Array, true)
+#4 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(872): CBaseController->renderFile('/var/www/yiiapp...', Array, true)
+#5 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(785): CController->renderPartial('admin', Array, true)
+#6 /var/www/yiiapp/htdocs/protected/controllers/TodoController.php(152): CController->render('admin', Array)
+#7 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/actions/CInlineAction.php(49): TodoController->actionAdmin()
+#8 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#9 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/filters/CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#10 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#11 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(1148): CFilter->filter(Object(CFilterChain))
+#12 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#13 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#14 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(291): CFilterChain->run()
+#15 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#17 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#18 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#19 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/20
+---
+2017/07/13 14:01:00 [error] [exception.CException] CException: TodoController cannot find the requested view "admin". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:881
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(785): CController->renderPartial('admin', Array, true)
+#1 /var/www/yiiapp/htdocs/protected/controllers/TodoController.php(152): CController->render('admin', Array)
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/actions/CInlineAction.php(49): TodoController->actionAdmin()
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/filters/CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#5 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(1148): CFilter->filter(Object(CFilterChain))
+#7 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#9 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(291): CFilterChain->run()
+#10 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#12 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#13 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#14 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/19
+---
+2017/07/13 14:02:05 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "admin". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:486
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(270): CController->missingAction('admin')
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/19
+---
+2017/07/13 14:02:06 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "admin". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:486
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(270): CController->missingAction('admin')
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/19
+---
+2017/07/13 14:02:21 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "admin". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:486
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(270): CController->missingAction('admin')
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/19
+---
+2017/07/13 14:02:22 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "admin". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:486
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(270): CController->missingAction('admin')
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/19
+---
+2017/07/13 14:02:22 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "admin". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:486
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(270): CController->missingAction('admin')
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/19
+---
+2017/07/13 14:02:23 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "admin". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:486
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(270): CController->missingAction('admin')
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/19
+---
+2017/07/13 14:02:23 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "admin". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:486
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(270): CController->missingAction('admin')
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/19
+---
+2017/07/13 14:02:23 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "admin". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:486
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(270): CController->missingAction('admin')
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/19
+---
+2017/07/13 14:02:23 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "admin". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:486
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(270): CController->missingAction('admin')
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/19
+---
+2017/07/13 14:02:59 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "admin". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:486
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(270): CController->missingAction('admin')
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/19
+---
+2017/07/13 14:02:59 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "admin". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:486
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(270): CController->missingAction('admin')
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/19
+---
+2017/07/13 14:02:59 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "admin". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:486
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(270): CController->missingAction('admin')
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/19
+---
+2017/07/13 14:03:00 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "admin". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:486
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(270): CController->missingAction('admin')
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/19
+---
+2017/07/13 14:04:02 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "admin". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:486
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(270): CController->missingAction('admin')
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/19
+---
+2017/07/13 14:04:02 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "admin". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:486
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(270): CController->missingAction('admin')
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/19
+---
+2017/07/13 14:04:02 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "admin". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:486
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(270): CController->missingAction('admin')
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/19
+---
+2017/07/13 14:04:52 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "admin". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:486
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(270): CController->missingAction('admin')
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/19
+---
+2017/07/13 14:04:52 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "admin". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:486
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(270): CController->missingAction('admin')
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/19
+---
+2017/07/13 14:04:53 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "admin". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:486
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(270): CController->missingAction('admin')
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/19
+---
+2017/07/13 14:04:53 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "admin". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:486
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(270): CController->missingAction('admin')
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/19
+---
+2017/07/13 14:04:54 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "admin". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:486
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(270): CController->missingAction('admin')
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/19
+---
+2017/07/13 14:04:54 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "admin". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:486
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(270): CController->missingAction('admin')
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/19
+---
+2017/07/13 14:04:54 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "admin". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:486
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(270): CController->missingAction('admin')
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/19
+---
+2017/07/13 14:04:54 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "admin". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:486
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(270): CController->missingAction('admin')
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/19
+---
+2017/07/13 14:04:54 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "admin". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:486
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(270): CController->missingAction('admin')
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/19
+---
+2017/07/13 14:08:02 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "admin". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:486
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(270): CController->missingAction('admin')
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/create
+---
+2017/07/13 14:08:19 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "admin". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:486
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(270): CController->missingAction('admin')
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/create
+---
+2017/07/13 14:08:20 [error] [exception.CHttpException.404] CHttpException: The system is unable to find the requested action "admin". in /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php:486
+Stack trace:
+#0 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CController.php(270): CController->missingAction('admin')
+#1 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(282): CController->run('admin')
+#2 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/web/CWebApplication.php(141): CWebApplication->runController('todo/admin')
+#3 /home/abreski/Workspace/yii/yii-1.1.19.5790cb/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#4 /var/www/yiiapp/htdocs/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/todo/admin
+HTTP_REFERER=http://dev.yiiapp.com/todo/create
+---

@@ -9,7 +9,7 @@ $this->breadcrumbs=array(
 
 $this->menu=array(
 	array('label'=>'List Todo', 'url'=>array('index')),
-	array('label'=>'Manage Todo', 'url'=>array('admin')),
+	
 );
 ?>
 

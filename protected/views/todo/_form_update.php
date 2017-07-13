@@ -32,6 +32,12 @@
 			<?php echo $form->textField($model,'description',array('size'=>50,'maxlength'=>50)); ?>
 			<?php echo $form->error($model,'description'); ?>			
 		</div>
+
+        <div class="col-xs-2" style="text-align:center;">			
+			<?php echo $form->labelEx($model,'complete'); ?>
+			<?php echo $form->checkBox($model,'complete'); ?>
+			<?php echo $form->error($model,'complete'); ?>			
+		</div>
 		
 	</div>
 	<div class="row buttons">
