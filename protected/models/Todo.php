@@ -26,11 +26,12 @@ class Todo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('complete', 'numerical', 'integerOnly'=>true),
+			array('complete', 'boolean','falseValue'=>'1', 'trueValue'=>'0'),
 			array('description', 'length', 'max'=>50),
+			array('title', 'length', 'max'=>50),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, description, complete', 'safe', 'on'=>'search'),
+			array('id, title, description, complete', 'safe'),
 		);
 	}
 
@@ -52,6 +53,7 @@ class Todo extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
+			'title'=> 'Title',
 			'description' => 'Description',
 			'complete' => 'Complete',
 		);
@@ -76,6 +78,7 @@ class Todo extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
+		$criteria->compare('title',$this->title,true);
 		$criteria->compare('description',$this->description,true);
 		$criteria->compare('complete',$this->complete);
 

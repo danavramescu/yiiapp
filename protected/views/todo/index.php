@@ -1,13 +1,25 @@
 <?php
 /* @var $this TodoController */
+/* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Todo',
+	'Todos',
 );
-?>
-<h1><?php echo $this->id . '/' . $this->action->id; ?></h1>
 
-<p>
-	You may change the content of this page by modifying
-	the file <tt><?php echo __FILE__; ?></tt>.
-</p>
+$this->menu=array(
+	 array('label'=>'Create Todo', 'url'=>array('create')),
+	 array('label'=>'Manage Todo', 'url'=>array('admin')),
+);
+
+
+
+?>
+
+<h1>Todos</h1>
+
+<?php $this->widget('zii.widgets.CListView', array(
+	'dataProvider'=>$dataProvider,
+	'itemView'=>'_view',
+)); ?>
+
+<?php $this->renderPartial('_form', array('model'=>$model)); ?>

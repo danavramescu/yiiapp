@@ -14,6 +14,13 @@ $this->menu=array(
 	array('label'=>'Delete Todo', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Manage Todo', 'url'=>array('admin')),
 );
+
+if ($model->complete == 1) {
+	$model->complete = "completed";
+}  else {
+	$model->complete = "in progress";
+}
+
 ?>
 
 <h1>View Todo #<?php echo $model->id; ?></h1>
@@ -22,6 +29,7 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id',
+		'title',
 		'description',
 		'complete',
 	),
