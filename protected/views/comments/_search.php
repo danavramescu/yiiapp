@@ -1,6 +1,6 @@
 <?php
-/* @var $this UserController */
-/* @var $model User */
+/* @var $this CommentsController */
+/* @var $model Comments */
 /* @var $form CActiveForm */
 ?>
 
@@ -17,11 +17,19 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'username'); ?>
-		<?php echo $form->textField($model,'username',array('size'=>60,'maxlength'=>128)); ?>
+		<?php echo $form->label($model,'user_id'); ?>
+		<?php echo $form->textField($model,'user_id'); ?>
 	</div>
 
-	
+	<div class="row">
+		<?php echo $form->label($model,'article_id'); ?>
+		<?php echo $form->textField($model,'article_id'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'content'); ?>
+		<?php echo $form->textField($model,'content',array('size'=>60,'maxlength'=>300)); ?>
+	</div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>

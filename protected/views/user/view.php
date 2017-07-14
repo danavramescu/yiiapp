@@ -24,6 +24,12 @@ $this->menu=array(
 		'id',
 		'username',
 		'password',
-		'email',
+		'isAdmin',		
 	),
 )); ?>
+
+<?php  if ($model->isAdmin === '1') 
+			echo 'Admin';
+			else
+			echo 'Regular User';	
+?>

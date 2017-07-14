@@ -11,12 +11,23 @@
  */
 class User extends CActiveRecord
 {
+	 public function isAdmin()
+	 {
+		 if ($this->isAdmin === '1') {
+			 return true;
+		 }
+		 else
+		 {
+			 return false;
+		 }
+
+	 }
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'tbl_user';
+		return 'tbl_users';
 	}
 
 	/**
@@ -27,12 +38,14 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('username, password, email', 'required'),
-			array('username, password, email', 'length', 'max'=>128),
+			array('username, password', 'required'),
+			array('username, password', 'length', 'max'=>128),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, username, password, email', 'safe', 'on'=>'search'),
+			array('id, username, password', 'safe', 'on'=>'search'),
 		);
+
+		
 	}
 
 	/**
@@ -48,14 +61,15 @@ class User extends CActiveRecord
 
 	/**
 	 * @return array customized attribute labels (name=>label)
-	 */
+	 */ 
 	public function attributeLabels()
 	{
 		return array(
 			'id' => 'ID',
 			'username' => 'Username',
 			'password' => 'Password',
-			'email' => 'Email',
+			'isAdmin' => 'IsAdmin'
+			
 		);
 	}
 
@@ -80,7 +94,8 @@ class User extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('username',$this->username,true);
 		$criteria->compare('password',$this->password,true);
-		$criteria->compare('email',$this->email,true);
+		$criteria->compare('isAdmin',$this->isAdmin);
+		
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -97,6 +112,8 @@ class User extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+
+	
 
 	
 }

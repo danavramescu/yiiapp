@@ -26,7 +26,8 @@ class ArticlesController extends Controller
 	 * @return array access control rules
 	 */
 	public function accessRules()
-	{
+	{	
+		
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view'),
@@ -38,7 +39,7 @@ class ArticlesController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('delete'),
-				'users'=>array('@'),
+				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -90,31 +91,23 @@ class ArticlesController extends Controller
 		$model->title = $search;
 		$model->description = $search;
 		$articles = $model->search()->getData();
-
-		//$articles = Articles::model()->findAllByAttributes(array('title'=>$search));		
-		//$articles = Articles::model()->findAll();
-		
-		
-		
+	
 		$this->render('index', array('articles'=>$articles, 'search'=>$search));		
 
 		
 	}
 
-##	public function actionIndex() {
-##		$articles =new Articles('search');
-##		if(isset($_GET['Articles']))
-##			$articles->attributes =$_GET['Articles'];
-##
-##		$this->render('index', array('articles'=>$articles));
-##	}
-
 	public function actionView($id) 
-	{				
+	{		
+		$user = User::model()->findByPk(Yii::app()->user->id);		
+		
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+			'user' => $user
 		));		
 	}
+
+	
 
 	public function actionCreate() 
 	{
@@ -122,9 +115,6 @@ class ArticlesController extends Controller
 		$model->publishedAt = date('Y-m-d');
 		$model->author = Yii::app()->user->getName();
 
-		/*
-		next block saves the newly posted article 
-		*/
 
 		if(isset($_POST['Articles']))
 		{				
@@ -155,34 +145,42 @@ class ArticlesController extends Controller
 		$model=$this->loadModel($id);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-		if(isset($_POST['Articles'])) {
-
-			$imageUploadFile = CUploadedFile::getInstance($model, 'image');
-
-			if($imageUploadFile !== null){ // only do if file is really uploaded
-				$imageFileName = mktime().$imageUploadFile->name;
-				$model->imgUrl = $imageFileName;				
-			}  
-
-			if ($model->save())
-			{
-				if($imageUploadFile !== null) // validate to save file
-					$imageUploadFile->saveAs(Yii::app()->basePath . "/.." . Articles::FOLDER_IMAGE.$imageFileName);        
-
-				$this->redirect(array('index','id'=>$model->id));
-			}
-		}
-		$this->render('update', array(
-			'model' => $model
-		));
 		
+		$user=User::model()->findbyPk(Yii::app()->user->id);
+		if ($user->isAdmin) {
 
-			if(isset($_POST['Articles']))
-		{
-			$model->attributes=$_POST['Articles'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}		
+
+			if(isset($_POST['Articles'])) {
+
+				$imageUploadFile = CUploadedFile::getInstance($model, 'image');
+
+				if($imageUploadFile !== null){ // only do if file is really uploaded
+					$imageFileName = mktime().$imageUploadFile->name;
+					$model->imgUrl = $imageFileName;				
+				}  
+
+				if ($model->save())
+				{
+					if($imageUploadFile !== null) // validate to save file
+						$imageUploadFile->saveAs(Yii::app()->basePath . "/.." . Articles::FOLDER_IMAGE.$imageFileName);        
+
+					$this->redirect(array('index','id'=>$model->id));
+				}
+			}
+			$this->render('update', array(
+				'model' => $model
+			));
+			
+
+				if(isset($_POST['Articles']))
+			{
+				$model->attributes=$_POST['Articles'];
+				if($model->save())
+					$this->redirect(array('view','id'=>$model->id));
+			}		
+		} else {
+			throw new CHttpException(404, "You don't have the rights");
+		}
 	}
 
 	public function actionDelete($id)
