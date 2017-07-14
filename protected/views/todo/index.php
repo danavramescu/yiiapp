@@ -27,7 +27,7 @@ $('.search-form form').submit(function(){
 
 
 ?>
-
+<h3 style="padding-left:10px;"> Add a new ToDo Task </h3>
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(

@@ -29,3 +29,20 @@ if (Yii::app()->user->getName()=='admin' OR strtolower(Yii::app()->user->getName
 	</div>	
 </div>
 
+<div class="row">
+	<div class="col-xs-12">
+		<h3> Comment Section </h3>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-3">
+		<span> USER NAME </span>
+	</div>
+	<div class="col-xs-9">
+		<div style="background-color:#f2f2f2; width:100%;">
+			blana
+		</div>
+	</div>
+</div>
+
