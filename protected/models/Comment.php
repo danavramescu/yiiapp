@@ -1,30 +1,23 @@
 <?php
 
 /**
- * This is the model class for table "tbl_articles".
+ * This is the model class for table "{{comments}}/tbl_comments".
  *
- * The followings are the available columns in table 'tbl_articles':
+ * The followings are the available columns in table '{{comments}}':
  * @property integer $id
- * @property string $title
- * @property string $author
- * @property string $publishedAt
- * @property string $imgUrl
- * @property string $description
+ * @property integer $user_id
+ * @property integer $article_id
+ * @property string $content
  */
-class Articles extends CActiveRecord
+class Comment extends CActiveRecord
 {
-	
-	public $image;
-	const FOLDER_IMAGE = '/public/images/';
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'tbl_articles';
+		return 'tbl_comments';
 	}
-
-
 
 	/**
 	 * @return array validation rules for model attributes.
@@ -34,12 +27,12 @@ class Articles extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title, author, publishedAt', 'required'),
+			array('user_id, article_id', 'numerical', 'integerOnly'=>true),
+			array('content', 'length', 'max'=>300),
+			array('content', 'length', 'min'=>5),
 			// The following rule is used by search().
-			// @todo Please remove those attributes that should not be searched.			
-			array('id, title, description', 'safe', 'on'=>'search'),
-			array('description, image', 'safe'),
-			array('publishedAt, author', 'unsafe')
+			// @todo Please remove those attributes that should not be searched.
+			array('id, user_id, article_id, content', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -61,12 +54,9 @@ class Articles extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'title' => 'Title',
-			'author' => 'Author',
-			'publishedAt' => 'Published At',
-			'imgUrl' => 'Image URL',
-			'description' => 'Description',
-			
+			'user_id' => 'User',
+			'article_id' => 'Article',
+			'content' => 'Content',
 		);
 	}
 
@@ -89,20 +79,12 @@ class Articles extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('title',$this->title,true, 'OR');
-		$criteria->compare('author',$this->author,true);
-		$criteria->compare('publishedAt',$this->publishedAt,true);
-		$criteria->compare('description',$this->description,true, 'OR');
-		
+		$criteria->compare('user_id',$this->user_id);
+		$criteria->compare('article_id',$this->article_id);
+		$criteria->compare('content',$this->content,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
-			'sort'=>array(
-            	'defaultOrder'=>'id ASC',
-			),
-			'pagination'=>array(
-				'pageSize'=>20
-			),
 		));
 	}
 
@@ -110,14 +92,10 @@ class Articles extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Articles the static model class
+	 * @return Comment  the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
 	}
-
-
-	
 }
-

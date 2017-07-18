@@ -15,12 +15,12 @@
 <div class="row">
 	<?php foreach ($articles as $article)  : ?>	
 	<div class="col-xs-4">	
-		<a href="/articles/view?id=<?=$article->id ?>">
+		<a href="/article/view?id=<?=$article->id ?>">
 			<h3 style="height:50px;"> <?=$article['title']?> </h3>
 			<span style="float:left"> <?=$article->author ;?> </span>
 			<span style="float:right"> <?=$article->publishedAt ;?> </span>				
 			<br>
-			<div style="min-height:150px; max-height:150px; overflow:hidden; display:block; background-color:black; background-image:url(<?=Articles::FOLDER_IMAGE.$article->imgUrl;?>); background-size:contain; background-repeat:no-repeat; background-position:center center;"></div>
+			<div style="min-height:150px; max-height:150px; overflow:hidden; display:block; background-color:black; background-image:url(<?=Article::FOLDER_IMAGE.$article->imgUrl;?>); background-size:contain; background-repeat:no-repeat; background-position:center center;"></div>
 			<p style="height:50px"> <?=$article->description; ?> </p>
 		</a>
 	</div>

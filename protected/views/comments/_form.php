@@ -1,9 +1,8 @@
 <?php
-/* @var $this CommentsController */
-/* @var $model Comments */
-/* @var $form CActiveForm */
+/* @var $this ArticlesController */
+/* @var $model Articles */
+/* @var $comment Comments */
 ?>
-
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -13,32 +12,17 @@
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
-)); ?>
+)); ?>	
 
-	
+	<?php echo $form->errorSummary($comment); ?>
 
-	<?php echo $form->errorSummary($model); ?>
-
-	<div class="row">
-		<?php //echo $form->labelEx($model,'user_id'); ?>
-		<?php //echo $form->textField($model,'user_id'); ?>
-		<?php //echo $form->error($model,'user_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php //echo $form->labelEx($model,'article_id'); ?>
-		<?php //echo $form->textField($model,'article_id'); ?>
-		<?php //echo $form->error($model,'article_id'); ?>
-	</div>
-
-	<div class="row">
-		<?php//echo $form->labelEx($model,'content'); ?>
-		<?php //echo $form->textField($model,'content',array('size'=>60,'maxlength'=>300)); ?>
-		<?php //echo $form->error($model,'content'); ?>
+	<div class="row">		
+		<?php echo $form->textArea($comment,'content',array('rows'=>3, 'cols'=>85, 'maxlength'=>400, 'value'=>'' , 'placeholder'=>'Write your message here...')); ?>
+		<?php echo $form->error($comment,'content'); ?>
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($comment->isNewRecord ? 'Create' : 'Post Message'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

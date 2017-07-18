@@ -1,6 +1,6 @@
 <?php
 
-class ArticlesController extends Controller
+class ArticleController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -34,13 +34,9 @@ class ArticlesController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','deleteComment'),
 				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('delete'),
-				'users'=>array('admin'),
-			),
+			),			
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
@@ -56,12 +52,12 @@ class ArticlesController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Articles the loaded model
+	 * @return Article the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Articles::model()->findByPk($id);
+		$model=Article::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -69,11 +65,11 @@ class ArticlesController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Articles $model the model to be validated
+	 * @param Article $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='articles-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='article-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
@@ -87,7 +83,7 @@ class ArticlesController extends Controller
 			$search=$_GET['titlesearch'];
 		} 	
 
-		$model = new Articles();
+		$model = new Article();
 		$model->title = $search;
 		$model->description = $search;
 		$articles = $model->search()->getData();
@@ -99,26 +95,52 @@ class ArticlesController extends Controller
 
 	public function actionView($id) 
 	{		
-		$user = User::model()->findByPk(Yii::app()->user->id);		
-		
+		$model=$this->loadModel($id);
+		$user = User::model()->findByPk(Yii::app()->user->id);
+			
+		//COMMENT FORM (logged users only)		
+		$comments= Yii::app()->db->createCommand('select * from tbl_users INNER JOIN tbl_comments ON tbl_comments.user_id = tbl_users.id WHERE tbl_comments.article_id =:article_id ORDER BY tbl_comments.publish_date DESC')->bindValue(':article_id',$model->id )->queryAll();   
+		//created joined table, ordered it by comment publish date latest to oldest
+
+		$comment = new Comment();
+		$comment->article_id = $model->id;
+		$comment->user_id = $user->id;
+
+		if(isset($_POST['Comment']))
+		{
+			$comment->attributes=$_POST['Comment'];
+			if ($comment->save()) {
+				$this->redirect(array('view','id'=>$model->id));
+			}
+			else {
+				
+			} 
+
+		}
+		//END FORM
+
+
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
-			'user' => $user
-		));		
+			'user' => $user,
+			'comment' => $comment,
+			'comments' => $comments
+		));	
+
 	}
 
 	
 
 	public function actionCreate() 
 	{
-		$model=new Articles;
+		$model=new Article;
 		$model->publishedAt = date('Y-m-d');
 		$model->author = Yii::app()->user->getName();
 
 
-		if(isset($_POST['Articles']))
+		if(isset($_POST['Article']))
 		{				
-			$model->attributes=$_POST['Articles'];			
+			$model->attributes=$_POST['Article'];			
 			$imageUploadFile = CUploadedFile::getInstance($model, 'image');
 
             if($imageUploadFile !== null){ // only do if file is really uploaded
@@ -129,7 +151,7 @@ class ArticlesController extends Controller
 			if ($model->save())
 			{
                 if($imageUploadFile !== null) // validate to save file
-                    $imageUploadFile->saveAs(Yii::app()->basePath . "/.." . Articles::FOLDER_IMAGE.$imageFileName);        
+                    $imageUploadFile->saveAs(Yii::app()->basePath . "/.." . Article::FOLDER_IMAGE.$imageFileName);        
  
                 $this->redirect(array('view','id'=>$model->id));
             }			
@@ -150,7 +172,7 @@ class ArticlesController extends Controller
 		if ($user->isAdmin) {
 
 
-			if(isset($_POST['Articles'])) {
+			if(isset($_POST['Article'])) {
 
 				$imageUploadFile = CUploadedFile::getInstance($model, 'image');
 
@@ -162,7 +184,7 @@ class ArticlesController extends Controller
 				if ($model->save())
 				{
 					if($imageUploadFile !== null) // validate to save file
-						$imageUploadFile->saveAs(Yii::app()->basePath . "/.." . Articles::FOLDER_IMAGE.$imageFileName);        
+						$imageUploadFile->saveAs(Yii::app()->basePath . "/.." . Article::FOLDER_IMAGE.$imageFileName);        
 
 					$this->redirect(array('index','id'=>$model->id));
 				}
@@ -172,9 +194,9 @@ class ArticlesController extends Controller
 			));
 			
 
-				if(isset($_POST['Articles']))
+				if(isset($_POST['Article']))
 			{
-				$model->attributes=$_POST['Articles'];
+				$model->attributes=$_POST['Article'];
 				if($model->save())
 					$this->redirect(array('view','id'=>$model->id));
 			}		
@@ -190,6 +212,18 @@ class ArticlesController extends Controller
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax']))
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+	}
+
+	public function actionDeleteComment($id)
+	{		
+		$user = User::model()->findByPk(Yii::app()->user->id);
+		$comment = Comment::model()->findByPk($id);	
+
+		if ($user->isAdmin OR $comment->user_id === $user->id) 	{	
+			if ($comment->delete()) {
+				$this->redirect(array('view','id'=>$comment->article_id));
+			}
+		}
 	}
 
 	
