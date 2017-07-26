@@ -54,23 +54,36 @@ if (!Yii::app()->user->isGuest) {
 <br>
 <?php if (!empty($comments))
 		foreach ($comments as $item) :?>
-		
-<div class="row" style = "margin-top:5px;">
-	<div class="col-xs-3">
-		<span style="padding:10px 20px; display:block; background:darkgray;"><?php echo $item['username']; ?></span>
+
+<?php 
+$ownerStyle='';
+if($user['username'] === $item['username']) 
+	$ownerStyle= 'filter:invert(100%)'; ?>
+
+<div class="row" style = "margin-top:5px;">	
+	<div class="col-xs-2">
+		<span style="padding:10px 20px; display:block; background:darkgray;  <?=$ownerStyle?>"><?php echo $item['username']; ?></span>
 	</div>	
 	<div class="col-xs-8">
-		<div style="background-color:#f2f2f2; width:100%;  padding:10px 20px;">			
+		<div style="background-color:#f2f2f2; width:100%;  padding:10px 20px;  <?=$ownerStyle?>">			
 			<?php echo $item['content'];?>
 		</div>
 	</div>
-	<div class="col-xs-1">
-		<?php if($user->isAdmin or $user['username']===$item['username']) : ?>
-		<form action="/article/deleteComment?id=<?=$item['id']?>" method="post">
-			<input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete?')">
-		</form>
-		<?php endif; ?>
+	<?php if($user->isAdmin || $user['username'] === $item['username']) : ?>
+	<div class="col-xs-2">
+		<div class="row">
+			<div class="col-xs-6">				
+				<form action="/article/deleteComment?id=<?=$item['id']?>" method="post">
+					<input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this comment?')" class="btn btn-danger btn-sm" style="height:40px;">
+				</form>
+			</div>
+			<div class="col-xs-6">
+				<form action="/article/updateComment?id=<?=$item['id']?>" method="post" >
+					<input type="submit" value="Edit" class="btn btn-sm btn-success" style="height:40px;">
+				</form>
+			</div>				
+		</div>
 	</div>
-	
+	<?php endif; ?>
 </div>
 <?php endforeach;?>

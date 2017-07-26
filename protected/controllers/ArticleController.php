@@ -34,7 +34,7 @@ class ArticleController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update','deleteComment'),
+				'actions'=>array('create','update','deleteComment', 'updateComment'),
 				'users'=>array('@'),
 			),			
 			array('deny',  // deny all users
@@ -169,35 +169,24 @@ class ArticleController extends Controller
 		// $this->performAjaxValidation($model);
 		
 		$user=User::model()->findbyPk(Yii::app()->user->id);
-		if ($user->isAdmin) {
+		if ($user->isAdmin || $user->id === $model->user_id) {
 
+			$this->render('update', array(
+				'model' => $model
+			));			
 
 			if(isset($_POST['Article'])) {
-
 				$imageUploadFile = CUploadedFile::getInstance($model, 'image');
 
 				if($imageUploadFile !== null){ // only do if file is really uploaded
 					$imageFileName = mktime().$imageUploadFile->name;
 					$model->imgUrl = $imageFileName;				
-				}  
-
-				if ($model->save())
-				{
+				}
+				$model->attributes=$_POST['Article'];
+				if($model->save())
 					if($imageUploadFile !== null) // validate to save file
 						$imageUploadFile->saveAs(Yii::app()->basePath . "/.." . Article::FOLDER_IMAGE.$imageFileName);        
 
-					$this->redirect(array('index','id'=>$model->id));
-				}
-			}
-			$this->render('update', array(
-				'model' => $model
-			));
-			
-
-				if(isset($_POST['Article']))
-			{
-				$model->attributes=$_POST['Article'];
-				if($model->save())
 					$this->redirect(array('view','id'=>$model->id));
 			}		
 		} else {
@@ -226,5 +215,26 @@ class ArticleController extends Controller
 		}
 	}
 
+	public function actionUpdateComment($id)
+	{		
+		$user = User::model()->findByPk(Yii::app()->user->id);
+		$comment = Comment::model()->findByPk($id);	
+		
+		if ($user->isAdmin OR $comment->user_id === $user->id) 	{							
+			$this->render('/comments/update', array('id'=>$comment->id));						
+			if (isset($_POST['Comment'])) {
+			 	$comment->attributes=$_POST['Comment'];
+				if ($comment->save($id)) 					
+			 		$this->redirect(array('view', 'id'=>$comment->article_id));	
+			}	
+		} else {
+			throw new CHttpException(404, "You don't have the rights");
+		}
+
+		
+	}
 	
 }
+
+
+		
