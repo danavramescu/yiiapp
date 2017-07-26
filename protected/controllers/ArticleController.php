@@ -208,7 +208,7 @@ class ArticleController extends Controller
 		$user = User::model()->findByPk(Yii::app()->user->id);
 		$comment = Comment::model()->findByPk($id);	
 
-		if ($user->isAdmin OR $comment->user_id === $user->id) 	{	
+		if ($user->isAdmin || $comment->user_id === $user->id) 	{	
 			if ($comment->delete()) {
 				$this->redirect(array('view','id'=>$comment->article_id));
 			}
@@ -220,7 +220,7 @@ class ArticleController extends Controller
 		$user = User::model()->findByPk(Yii::app()->user->id);
 		$comment = Comment::model()->findByPk($id);	
 		
-		if ($user->isAdmin OR $comment->user_id === $user->id) 	{							
+		if ($user->isAdmin || $comment->user_id === $user->id) 	{							
 			$this->render('/comments/update', array('id'=>$comment->id));						
 			if (isset($_POST['Comment'])) {
 			 	$comment->attributes=$_POST['Comment'];
